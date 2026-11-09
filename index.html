@@ -675,6 +675,137 @@ footer {
     font-size: 19px;
   }
 }
+  
+/* POETRY CARD — EDITORIAL STYLE */
+
+.poetry-feed {
+  max-width: 780px;
+  gap: 38px;
+}
+
+.poem-card {
+  position: relative;
+  overflow: hidden;
+  padding: 38px;
+  border: 1px solid rgba(169,194,223,.25);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(80,120,165,.16), transparent 35%),
+    linear-gradient(145deg, #192F4C, #101F35);
+  box-shadow: 0 22px 55px rgba(0,0,0,.2);
+}
+
+.poem-card::before {
+  content: "✦";
+  position: absolute;
+  top: 25px;
+  right: 29px;
+  color: rgba(169,194,223,.55);
+  font-size: 17px;
+}
+
+.poem-date {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #A9C2DF;
+}
+
+.poem-title {
+  margin-top: 20px;
+  margin-bottom: 24px;
+  font-size: clamp(32px, 6vw, 43px);
+  line-height: 1.15;
+  color: #F1F5FA;
+}
+
+.poem-text {
+  font-size: 19px;
+  line-height: 2;
+  color: #D6E0EC;
+}
+
+.card-divider {
+  width: 65px;
+  height: 1px;
+  background: linear-gradient(to right, #A9C2DF, transparent);
+  margin: 30px 0 20px;
+}
+
+/* PHOTO GALLERY */
+
+.carousel {
+  margin-top: 30px;
+  padding: 8px;
+  background: #091629;
+  border: 1px solid rgba(169,194,223,.25);
+  box-shadow: 0 12px 30px rgba(0,0,0,.2);
+}
+
+.carousel-track img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.carousel-controls {
+  padding: 15px 5px 0;
+}
+
+.carousel-controls button {
+  width: 38px;
+  height: 38px;
+  color: #EAF1F8;
+  background: #31577F;
+  border: 1px solid rgba(169,194,223,.25);
+  transition: .25s;
+}
+
+.carousel-controls button:hover {
+  background: #A9C2DF;
+  color: #0B192D;
+}
+
+.carousel-count {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #A9C2DF;
+}
+
+/* MUSIC PLAYER */
+
+.music-box {
+  margin-top: 28px;
+  padding: 20px;
+  background: rgba(7,18,33,.5);
+  border: 1px solid rgba(169,194,223,.2);
+}
+
+.music-label {
+  font-size: 9px;
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+  color: #A9C2DF;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .poem-card {
+    padding: 27px 20px;
+  }
+
+  .poem-title {
+    font-size: 33px;
+  }
+
+  .poem-text {
+    font-size: 17px;
+    line-height: 1.9;
+  }
+
+  .music-box {
+    padding: 14px;
+  }
+  }
+  
 </style>
 </head>
 
