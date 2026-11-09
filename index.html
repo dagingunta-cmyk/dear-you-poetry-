@@ -509,6 +509,172 @@ footer p {
     font-size: 15px;
   }
 }
+  
+/* MIDNIGHT EDITORIAL REDESIGN */
+
+body {
+  font-family: 'Manrope', sans-serif;
+  background: #0B192D;
+  letter-spacing: .1px;
+}
+
+.logo,
+.hero h1,
+.section-heading h2,
+.create-card h3,
+.poem-title,
+.poem-text,
+.footer-title {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.logo {
+  font-size: 31px;
+  letter-spacing: .3px;
+}
+
+header {
+  min-height: 82px;
+  padding: 18px 7%;
+  background: #091629;
+  border-bottom: 1px solid rgba(169,194,223,.17);
+}
+
+nav a {
+  font-size: 12px;
+  letter-spacing: .7px;
+}
+
+.hero {
+  min-height: 650px;
+  padding: 100px 22px 115px;
+  background:
+    radial-gradient(ellipse at 50% 45%, rgba(67,111,157,.35), transparent 58%),
+    linear-gradient(135deg, #142B4D 0%, #0B192D 75%);
+}
+
+.hero-kicker {
+  font-size: 10px;
+  letter-spacing: 7px;
+  line-height: 2;
+  max-width: 300px;
+}
+
+.hero h1 {
+  font-size: clamp(72px, 15vw, 118px);
+  font-weight: 500;
+  letter-spacing: -3px;
+  line-height: .95;
+}
+
+.hero-line {
+  width: 75px;
+  margin: 36px auto;
+  background: #A9C2DF;
+}
+
+.hero p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(23px, 5vw, 31px);
+  line-height: 1.5;
+  color: #D6E2EF;
+}
+
+.primary-button {
+  padding: 17px 32px;
+  letter-spacing: 2.5px;
+  font-size: 10px;
+  background: #A9C2DF;
+  border-color: #A9C2DF;
+}
+
+.section-heading span {
+  letter-spacing: 5px;
+  font-size: 9px;
+}
+
+.section-heading h2 {
+  font-size: clamp(39px, 8vw, 53px);
+  font-weight: 500;
+}
+
+.section-heading p {
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.create-card {
+  border: 1px solid rgba(169,194,223,.3);
+  background: linear-gradient(145deg, #172F50, #0E2038);
+  padding: 40px;
+}
+
+.create-card h3 {
+  font-size: 36px;
+}
+
+.field input,
+.field textarea {
+  background: rgba(5,15,29,.55);
+  border-color: rgba(169,194,223,.2);
+  font-family: 'Manrope', sans-serif;
+}
+
+.poem-card {
+  background: linear-gradient(145deg, #172F50, #10213A);
+  border: 1px solid rgba(169,194,223,.22);
+  padding: 35px;
+}
+
+.poem-title {
+  font-size: 36px;
+  font-weight: 500;
+}
+
+.poem-text {
+  font-size: 21px;
+  line-height: 1.9;
+  color: #E0E8F1;
+}
+
+footer {
+  background: #071321;
+}
+
+@media (max-width: 600px) {
+  .hero {
+    min-height: 590px;
+    padding: 85px 20px;
+  }
+
+  .hero h1 {
+    font-size: clamp(65px, 16vw, 90px);
+  }
+
+  .hero-kicker {
+    letter-spacing: 5px;
+  }
+
+  .create-card {
+    padding: 25px 19px;
+  }
+
+  .create-card h3 {
+    font-size: 31px;
+  }
+
+  .poem-card {
+    padding: 25px 19px;
+  }
+
+  .poem-title {
+    font-size: 31px;
+  }
+
+  .poem-text {
+    font-size: 19px;
+  }
+}
 </style>
 </head>
 
