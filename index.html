@@ -904,7 +904,70 @@ footer {
     animation: none;
   }
 }
-  
+  /* SOFT INTERACTIONS */
+
+html {
+  scroll-behavior: smooth;
+}
+
+.hero-content {
+  animation: heroReveal 1.2s ease both;
+}
+
+.poem-card {
+  animation: cardReveal .8s ease both;
+  transition:
+    transform .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+
+.poem-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(169,194,223,.42);
+  box-shadow: 0 18px 45px rgba(0,0,0,.22);
+}
+
+button,
+a {
+  transition: all .3s ease;
+}
+
+button:hover {
+  filter: brightness(1.12);
+}
+
+@keyframes heroReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
 </style>
 </head>
 
