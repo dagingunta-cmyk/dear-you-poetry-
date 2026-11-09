@@ -1,0 +1,727 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#172b49">
+<title>Dear, You.</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --navy: #172b49;
+  --blue: #344d6c;
+  --cream: #f7f5ef;
+  --white: #fff;
+  --muted: #9299a4;
+  --line: #e8e6df;
+  --green: #1DB954;
+}
+
+body {
+  background: var(--cream);
+  color: var(--navy);
+  font-family: Georgia, serif;
+}
+
+button, input, textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+header {
+  height: 68px;
+  padding: 0 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 23px;
+  font-weight: bold;
+  letter-spacing: -1px;
+}
+
+.logo span {
+  color: #91a4bd;
+}
+
+nav {
+  display: flex;
+  gap: 17px;
+  font: 11px Arial, sans-serif;
+}
+
+nav a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.hero {
+  padding: 75px 20px 65px;
+  text-align: center;
+}
+
+.hero small {
+  letter-spacing: 4px;
+  font: 10px Arial, sans-serif;
+  color: #8795a7;
+}
+
+.hero h1 {
+  font-size: clamp(45px, 10vw, 75px);
+  font-weight: normal;
+  margin: 20px 0;
+}
+
+.hero p {
+  color: #828995;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.9;
+}
+
+.hero button {
+  margin-top: 28px;
+  padding: 14px 25px;
+  background: var(--navy);
+  color: white;
+  border: none;
+  font: 11px Arial, sans-serif;
+  letter-spacing: 1px;
+}
+
+main {
+  max-width: 620px;
+  margin: auto;
+  padding: 0 15px 70px;
+}
+
+.section-heading {
+  text-align: center;
+  margin: 35px 0 25px;
+}
+
+.section-heading h2 {
+  font-size: 27px;
+  font-weight: normal;
+}
+
+.section-heading p {
+  margin-top: 8px;
+  font: 11px Arial, sans-serif;
+  color: var(--muted);
+}
+
+.create-box {
+  background: white;
+  padding: 22px;
+  border: 1px solid var(--line);
+  margin-bottom: 40px;
+}
+
+.create-box h3 {
+  font-size: 20px;
+  font-weight: normal;
+  margin-bottom: 18px;
+}
+
+.field {
+  width: 100%;
+  border: 1px solid var(--line);
+  padding: 13px;
+  margin-bottom: 12px;
+  outline: none;
+  font: 12px Arial, sans-serif;
+  color: var(--navy);
+  background: white;
+}
+
+.field:focus {
+  border-color: #8295ad;
+}
+
+textarea.field {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.7;
+}
+
+.upload-label {
+  display: block;
+  padding: 20px;
+  border: 1px dashed #aab5c2;
+  text-align: center;
+  cursor: pointer;
+  font: 12px Arial, sans-serif;
+  color: var(--blue);
+  margin-bottom: 12px;
+}
+
+.upload-label span {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 7px;
+}
+
+#photoInput {
+  display: none;
+}
+
+#selectedInfo {
+  font: 11px Arial, sans-serif;
+  color: var(--blue);
+  margin-bottom: 15px;
+}
+
+.music-label {
+  font: 11px Arial, sans-serif;
+  color: var(--blue);
+  margin: 8px 0;
+  display: block;
+}
+
+.publish-btn {
+  background: var(--navy);
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 15px;
+  font: 11px Arial, sans-serif;
+  letter-spacing: 1px;
+}
+
+.feed {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+}
+
+.post {
+  background: white;
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.post-head {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.author {
+  font: bold 12px Arial, sans-serif;
+}
+
+.post-date {
+  color: var(--muted);
+  font: 10px Arial, sans-serif;
+  margin-top: 5px;
+}
+
+.post-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #e9e8e3;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.post-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.slide-number {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  background: #172b49c9;
+  color: white;
+  padding: 7px 11px;
+  border-radius: 20px;
+  font: 10px Arial, sans-serif;
+}
+
+.slide-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 13px;
+}
+
+.slide-controls button {
+  width: 31px;
+  height: 31px;
+  border: none;
+  border-radius: 50%;
+  background: var(--navy);
+  color: white;
+  font-size: 19px;
+}
+
+.slide-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ccd1d8;
+}
+
+.dot.active {
+  background: var(--navy);
+}
+
+.post-content {
+  padding: 5px 18px 20px;
+}
+
+.post-content h3 {
+  font-size: 21px;
+  font-weight: normal;
+  margin-bottom: 12px;
+}
+
+.post-caption {
+  font-size: 13px;
+  line-height: 1.9;
+  color: #606b79;
+  white-space: pre-wrap;
+}
+
+.music-section {
+  padding: 15px;
+  background: #f5f6f2;
+  margin: 0 16px 17px;
+  border-radius: 8px;
+}
+
+.music-section h4 {
+  font: bold 11px Arial, sans-serif;
+  margin-bottom: 12px;
+}
+
+.music-section iframe {
+  display: block;
+  width: 100%;
+  height: 152px;
+  border: none;
+  border-radius: 10px;
+}
+
+.music-link {
+  font: 11px Arial, sans-serif;
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.post-footer {
+  padding: 13px 17px;
+  border-top: 1px solid var(--line);
+  color: #9299a4;
+  font: 10px Arial, sans-serif;
+  letter-spacing: 1px;
+}
+
+.empty {
+  text-align: center;
+  padding: 40px 15px;
+  background: white;
+  border: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.archive {
+  margin-top: 45px;
+  text-align: center;
+}
+
+.archive p {
+  font-size: 13px;
+  color: #9299a4;
+  margin-top: 10px;
+}
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 35px 15px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 2;
+  color: #9299a4;
+}
+
+@media(max-width:480px) {
+  header {
+    padding: 0 17px;
+  }
+
+  nav {
+    gap: 12px;
+    font-size: 10px;
+  }
+
+  .hero {
+    padding: 60px 15px;
+  }
+
+  .create-box {
+    padding: 16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Dear<span>,</span> You.</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#feed">Poetries</a>
+    <a href="#create">Create</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <small>A LITTLE COLLECTION OF WORDS</small>
+  <h1>Dear, You.</h1>
+  <p>
+    Some feelings are too beautiful<br>
+    to be left unwritten.
+  </p>
+  <button onclick="document.getElementById('feed').scrollIntoView({behavior:'smooth'})">
+    EXPLORE MY WORDS
+  </button>
+</section>
+
+<main>
+
+<section id="create" class="create-box">
+  <h3>Create a new memory.</h3>
+
+  <input
+    id="postTitle"
+    class="field"
+    placeholder="Judul puisi..."
+    maxlength="100"
+  >
+
+  <textarea
+    id="postCaption"
+    class="field"
+    placeholder="Tuliskan puisi atau kata-katamu..."
+  ></textarea>
+
+  <label class="upload-label" for="photoInput">
+    + Add photographs
+    <span>Pilih beberapa foto untuk membuat carousel 1:1</span>
+  </label>
+
+  <input
+    type="file"
+    id="photoInput"
+    accept="image/*"
+    multiple
+  >
+
+  <div id="selectedInfo">Belum ada foto yang dipilih.</div>
+
+  <label class="music-label">♫ Spotify link (opsional)</label>
+
+  <input
+    id="spotifyLink"
+    class="field"
+    type="url"
+    placeholder="Tempel link lagu atau playlist Spotify..."
+  >
+
+  <button class="publish-btn" onclick="createPost()">
+    PUBLISH POST
+  </button>
+</section>
+
+<section id="feed">
+
+  <div class="section-heading">
+    <h2>Collected Words</h2>
+    <p>A collection of moments and feelings.</p>
+  </div>
+
+  <div class="feed" id="postFeed">
+    <div class="empty">
+      Your collection will begin here.
+    </div>
+  </div>
+
+</section>
+
+<section class="archive">
+  <h2 style="font-weight:normal">A little archive.</h2>
+  <p>Every word has its own story.</p>
+</section>
+
+</main>
+
+<footer>
+  Made of words, memories, and love.<br>
+  <i>Dear, You. © 2026</i>
+</footer>
+
+<script>
+const photoInput = document.getElementById("photoInput");
+
+let selectedPhotos = [];
+let posts = [];
+
+photoInput.addEventListener("change", function() {
+  selectedPhotos = Array.from(this.files);
+
+  document.getElementById("selectedInfo").textContent =
+    selectedPhotos.length
+    ? selectedPhotos.length + " foto dipilih."
+    : "Belum ada foto yang dipilih.";
+});
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;"
+  })[char]);
+}
+
+function getSpotifyEmbed(link) {
+  if (!link) return null;
+
+  try {
+    const url = new URL(link.trim());
+
+    if (
+      url.hostname !== "open.spotify.com" &&
+      url.hostname !== "www.open.spotify.com"
+    ) {
+      return null;
+    }
+
+    const parts = url.pathname.split("/").filter(Boolean);
+    const allowed = ["track", "album", "playlist", "episode", "show"];
+
+    if (!allowed.includes(parts[0]) || !parts[1]) {
+      return null;
+    }
+
+    return "https://open.spotify.com/embed/" +
+      parts[0] + "/" + encodeURIComponent(parts[1]);
+  } catch {
+    return null;
+  }
+}
+
+function createPost() {
+  const title = document.getElementById("postTitle").value.trim();
+  const caption = document.getElementById("postCaption").value.trim();
+  const spotify = document.getElementById("spotifyLink").value.trim();
+
+  if (!title || !caption) {
+    alert("Isi judul dan puisi terlebih dahulu.");
+    return;
+  }
+
+  if (!selectedPhotos.length) {
+    alert("Pilih minimal satu foto.");
+    return;
+  }
+
+  const embed = getSpotifyEmbed(spotify);
+
+  if (spotify && !embed) {
+    alert("Masukkan link Spotify yang valid.");
+    return;
+  }
+
+  const post = {
+    id: Date.now(),
+    title,
+    caption,
+    spotify: embed,
+    photos: selectedPhotos.map(file => ({
+      url: URL.createObjectURL(file)
+    })),
+    date: new Date().toLocaleDateString("id-ID", {
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    })
+  };
+
+  posts.unshift(post);
+  renderPosts();
+
+  document.getElementById("postTitle").value = "";
+  document.getElementById("postCaption").value = "";
+  document.getElementById("spotifyLink").value = "";
+
+  photoInput.value = "";
+  selectedPhotos = [];
+
+  document.getElementById("selectedInfo").textContent =
+    "Belum ada foto yang dipilih.";
+
+  document.getElementById("feed").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function renderPosts() {
+  const feed = document.getElementById("postFeed");
+  feed.innerHTML = "";
+
+  posts.forEach(post => {
+    let currentSlide = 0;
+
+    const card = document.createElement("article");
+    card.className = "post";
+
+    card.innerHTML = `
+      <div class="post-head">
+        <div>
+          <div class="author">Dear, You.</div>
+          <div class="post-date">${post.date}</div>
+        </div>
+        <div style="font-size:21px">♡</div>
+      </div>
+
+      <div class="post-image">
+        <img src="${post.photos[0].url}" alt="Foto puisi">
+        <div class="slide-number">1 / ${post.photos.length}</div>
+      </div>
+
+      <div class="slide-controls">
+        <button class="previous" aria-label="Foto sebelumnya">‹</button>
+        <div class="slide-dots"></div>
+        <button class="next" aria-label="Foto selanjutnya">›</button>
+      </div>
+
+      <div class="post-content">
+        <h3>${escapeHTML(post.title)}</h3>
+        <div class="post-caption">${escapeHTML(post.caption)}</div>
+      </div>
+
+      ${post.spotify ? `
+        <div class="music-section">
+          <h4>♫ A SONG FOR THIS POEM</h4>
+          <iframe
+            src="${post.spotify}"
+            title="Spotify music player"
+            loading="lazy"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          ></iframe>
+        </div>
+      ` : ""}
+
+      <div class="post-footer">
+        A LITTLE PIECE OF MY HEART.
+      </div>
+    `;
+
+    const image = card.querySelector(".post-image");
+    const img = card.querySelector("img");
+    const number = card.querySelector(".slide-number");
+    const dots = card.querySelector(".slide-dots");
+
+    function updateSlide() {
+      img.src = post.photos[currentSlide].url;
+
+      number.textContent =
+        (currentSlide + 1) + " / " + post.photos.length;
+
+      dots.innerHTML = "";
+
+      post.photos.forEach((photo, index) => {
+        const dot = document.createElement("span");
+
+        dot.className = "dot" +
+          (index === currentSlide ? " active" : "");
+
+        dots.appendChild(dot);
+      });
+    }
+
+    card.querySelector(".previous").onclick = () => {
+      currentSlide =
+        (currentSlide - 1 + post.photos.length) %
+        post.photos.length;
+
+      updateSlide();
+    };
+
+    card.querySelector(".next").onclick = () => {
+      currentSlide =
+        (currentSlide + 1) % post.photos.length;
+
+      updateSlide();
+    };
+
+    let startX = 0;
+
+    image.addEventListener("touchstart", event => {
+      startX = event.touches[0].clientX;
+    }, {passive:true});
+
+    image.addEventListener("touchend", event => {
+      const difference =
+        event.changedTouches[0].clientX - startX;
+
+      if (Math.abs(difference) < 45) return;
+
+      if (difference < 0) {
+        currentSlide =
+          (currentSlide + 1) % post.photos.length;
+      } else {
+        currentSlide =
+          (currentSlide - 1 + post.photos.length) %
+          post.photos.length;
+      }
+
+      updateSlide();
+    }, {passive:true});
+
+    updateSlide();
+    feed.appendChild(card);
+  });
+}
+</script>
+
+</body>
+  </html>
+  
