@@ -806,6 +806,105 @@ footer {
   }
   }
   
+/* HOME — MIDNIGHT ATMOSPHERE */
+
+.hero {
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 15% 20%, rgba(88,130,180,.18), transparent 30%),
+    radial-gradient(ellipse at 85% 75%, rgba(65,105,155,.2), transparent 35%),
+    radial-gradient(ellipse at 50% 45%, rgba(49,87,127,.4), transparent 60%),
+    linear-gradient(145deg, #142B4D, #091629);
+}
+
+.hero::before {
+  content: "✧";
+  top: 18%;
+  left: 13%;
+  font-size: 30px;
+  animation: starFloat 5s ease-in-out infinite;
+}
+
+.hero::after {
+  content: "✦";
+  right: 14%;
+  bottom: 23%;
+  font-size: 20px;
+  animation: starFloat 6s ease-in-out infinite reverse;
+}
+
+.hero-kicker {
+  position: relative;
+  padding: 0 25px;
+}
+
+.hero-kicker::before,
+.hero-kicker::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 18px;
+  height: 1px;
+  background: #A9C2DF;
+}
+
+.hero-kicker::before {
+  left: 0;
+}
+
+.hero-kicker::after {
+  right: 0;
+}
+
+.hero h1 {
+  text-shadow: 0 8px 35px rgba(169,194,223,.12);
+}
+
+.hero-line {
+  position: relative;
+  width: 90px;
+}
+
+.hero-line::after {
+  content: "✦";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0 10px;
+  color: #A9C2DF;
+  background: #142B4D;
+  font-size: 12px;
+}
+
+.primary-button {
+  box-shadow: 0 8px 30px rgba(169,194,223,.12);
+  transition: all .35s ease;
+}
+
+.primary-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px rgba(169,194,223,.25);
+}
+
+@keyframes starFloat {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: .45;
+  }
+  50% {
+    transform: translateY(-12px);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before,
+  .hero::after {
+    animation: none;
+  }
+}
+  
 </style>
 </head>
 
