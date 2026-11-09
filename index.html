@@ -1067,6 +1067,93 @@ button:hover {
     padding: 30px 20px;
   }
 }
+  /* INTERACTION & ANIMATION UPGRADE */
+
+button, .btn, nav a {
+  transition: all .3s ease;
+}
+
+button:active, .btn:active {
+  transform: scale(.96);
+}
+
+nav a:hover {
+  color: var(--mist);
+  text-shadow: 0 0 12px rgba(169,194,223,.4);
+}
+
+.poem-card {
+  transition: transform .4s ease, box-shadow .4s ease;
+}
+
+.poem-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0,0,0,.25);
+}
+
+input, textarea {
+  transition: border-color .3s ease, box-shadow .3s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--mist);
+  box-shadow: 0 0 0 3px rgba(169,194,223,.12);
+  outline: none;
+}
+
+@keyframes softAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-content {
+  animation: softAppear 1s ease both;
+}
+
+.music-section {
+  animation: softAppear 1.2s ease both;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+  /* BACK TO TOP BUTTON */
+
+#backToTop {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 45px;
+  height: 45px;
+  border: 1px solid rgba(169,194,223,.4);
+  border-radius: 50%;
+  background: #142B4D;
+  color: #F8FAFD;
+  font-size: 22px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: .3s ease;
+  z-index: 999;
+}
+
+#backToTop.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#backToTop:hover {
+  background: #31577F;
+  transform: translateY(-4px);
+}
 </style>
 </head>
 
@@ -1349,5 +1436,26 @@ poemForm.addEventListener("submit", async event => {
     </p>
   </div>
 </section>
+  <button id="backToTop" aria-label="Back to top">
+  ↑
+  </button>
+  <script>
+const backToTop = document.getElementById("backToTop");
+
+window.addEventListener("scroll", function() {
+  if (window.scrollY > 300) {
+    backToTop.classList.add("show");
+  } else {
+    backToTop.classList.remove("show");
+  }
+});
+
+backToTop.addEventListener("click", function() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+  </script>
 </body>
 </html>
