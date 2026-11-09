@@ -1025,6 +1025,48 @@ button:hover {
     min-height: 152px;
   }
 }
+  /* MUSIC SECTION HEADING */
+
+.music-section {
+  max-width: 850px;
+  margin: 90px auto;
+  padding: 45px 25px;
+  text-align: center;
+}
+
+.music-heading {
+  margin-bottom: 30px;
+}
+
+.music-label {
+  color: var(--mist);
+  font-size: 10px;
+  letter-spacing: 4px;
+  font-family: 'Manrope', sans-serif;
+}
+
+.music-heading h2 {
+  margin: 18px 0;
+  color: var(--white);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(34px, 6vw, 52px);
+  font-weight: 500;
+}
+
+.music-heading p {
+  max-width: 430px;
+  margin: auto;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+@media (max-width: 600px) {
+  .music-section {
+    margin: 55px auto;
+    padding: 30px 20px;
+  }
+}
 </style>
 </head>
 
@@ -1297,6 +1339,15 @@ poemForm.addEventListener("submit", async event => {
   });
 });
 </script>
-
+<section class="music-section">
+  <div class="music-heading">
+    <span class="music-label">THE SOUND OF US</span>
+    <h2>Songs that remind me of you.</h2>
+    <p>
+      Some feelings are easier to express through music.
+      So, here are a few songs I wish you could hear.
+    </p>
+  </div>
+</section>
 </body>
 </html>
