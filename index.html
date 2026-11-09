@@ -1154,6 +1154,54 @@ html {
   background: #31577F;
   transform: translateY(-4px);
 }
+  /* FINAL MOBILE OPTIMIZATION */
+
+@media (max-width: 600px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  header {
+    padding: 14px 5%;
+    gap: 12px;
+  }
+
+  nav {
+    gap: 14px;
+  }
+
+  nav a {
+    font-size: 11px;
+  }
+
+  .hero {
+    min-height: 75vh;
+    padding: 70px 20px;
+  }
+
+  .hero h1 {
+    font-size: clamp(48px, 13vw, 68px);
+  }
+
+  .poetry-feed {
+    padding: 20px 15px;
+  }
+
+  .poem-card {
+    padding: 20px 16px;
+  }
+
+  .music-section {
+    padding: 25px 16px;
+  }
+
+  #backToTop {
+    right: 16px;
+    bottom: 16px;
+    width: 42px;
+    height: 42px;
+  }
+}
 </style>
 </head>
 
