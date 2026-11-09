@@ -968,6 +968,63 @@ button:hover {
     transition-duration: .01ms !important;
   }
 }
+  /* MIDNIGHT MUSIC PLAYER */
+
+.spotify-box {
+  position: relative;
+  margin: 28px 0;
+  padding: 18px;
+  border: 1px solid rgba(169,194,223,.22);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, #1b3558, #0b192d 75%);
+  box-shadow: 0 14px 35px rgba(0,0,0,.2);
+  overflow: hidden;
+}
+
+.spotify-box::before {
+  content: "♫";
+  position: absolute;
+  top: -24px;
+  right: 18px;
+  font-family: serif;
+  font-size: 100px;
+  color: rgba(169,194,223,.07);
+  pointer-events: none;
+}
+
+.spotify-box iframe {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  min-height: 152px;
+  border: none;
+  border-radius: 12px;
+}
+
+.spotify-box::after {
+  content: "A LITTLE MUSIC FOR YOUR WORDS";
+  display: block;
+  margin-top: 13px;
+  color: #a9c2df;
+  font-family: 'Manrope', sans-serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-align: center;
+  opacity: .75;
+}
+
+@media (max-width: 600px) {
+  .spotify-box {
+    padding: 13px;
+    border-radius: 15px;
+  }
+
+  .spotify-box iframe {
+    min-height: 152px;
+  }
+}
 </style>
 </head>
 
